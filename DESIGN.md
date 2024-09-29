@@ -143,9 +143,19 @@ Following are the indexes in this database :
 2. find_features : This index helps quickly navigate to the features of a guitar.
 
 ## Triggers
-1. 
+The database monitors the activity of the users adding, updating or deleting data. If it is found that a deleted user is trying to modify the data, a trigger is fired raising an error message. 
+1. deleted_user_inserts_reviews
+2. deleted_user_inserts_comments
+3. deleted_user_inserts_wishlists
+4. deleted_user_updates_reviews
+5. deleted_user_updates_comments
+6. deleted_user_updates_wishlists
+7.deleted_user_deleted_from_reviews
+8.deleted_user_deletes_from_comments
+9.deleted_user_deletes_from_wishlists
+10. check_old_and_new_price : this trigger is fired if the old and new prices are same in the price_comparison table
 ## Stored procedure
-The database monitors the activity of the users adding, updating or deleting data. If it is found that a deleted user is trying to modify the data, a trigger is fired raising an error message. This trigger will require the functionality to first check whether any insert or update or delete operation within the database is done by a user whose account is deleted. Triggers for all such operations on all valid tables will require this functionality. Hence the task is employed to a stored procedure called check_user_status. Now this procedure can be called within the triggers.
+This trigger will require the functionality to first check whether any insert or update or delete operation within the database is done by a user whose account is deleted. Triggers for all such operations on all valid tables will require this functionality. Hence the task is employed to a stored procedure called check_user_status. Now this procedure can be called within the triggers.
 
 ## Limitations
 
